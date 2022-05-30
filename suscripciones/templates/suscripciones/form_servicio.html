@@ -18,49 +18,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
-<header>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand col-4" href="#">
-            <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
-                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
-                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Nuestro Servicios</a></li>
-                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Servicios</a></li>
-                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <body>
-    <div class="fondoagregar  ">
-        <div class="tablaagregar  center">
-            <h1>Agregar Servicio</h1>
-            <form method="POST" action="" id="formulario" class="">
-                {% csrf_token %}
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand col-4" href="#">
+                <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+        </button>
+            <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Nuestro Servicios</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Servicios</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="fondoall">
+        <form method="POST" action="" id="formulario" class="formularioall">
 
-                <div class="l">
-                    {{ form.as_table}}
-                </div>
-                <br>
-                <div class="col">
-                    <button type="submit" class="btn btn-warning btn-lg font-weight-bold">Agregar</button>
-                    <hr>
-                    <button type="reset" class="btn btn-warning btn-lg font-weight-bold">Borrar</button>
-                    <hr>
-                    <a href="{% url 'form_lista'%}" class="btn btn-warning btn-lg font-weight-bold">Volver</a>
-                    <div id="error" class=" " role="alert">
-                        {{mensaje}}
-                    </div>
-                </div>
-            </form>
-        </div>
+            {% csrf_token %}
+            <h1>Agregar Servicio</h1>
+            {{ form.as_table}}
+            <br>
+            <button type="submit" class="btn btn-warning btn-lg font-weight-bold">Agregar</button>
+            <hr>
+            <button type="reset" class="btn btn-warning btn-lg font-weight-bold">Limpiar</button>
+            <hr>
+            <a href="{% url 'form_lista'%}" class="btn btn-warning btn-lg font-weight-bold">Volver</a>
+            <div id="error" class=" " role="alert">
+                {{mensaje}}
+            </div>
+
+        </form>
+
     </div>
 </body>
 

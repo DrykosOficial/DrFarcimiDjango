@@ -38,8 +38,8 @@
 </header>
 
 <body>
-    <div class="fondomodificar">
-        <div class="tablamodoficar">
+    <div class="fondoall">
+        <div class="formularioall">
             <h1>Modificar Servicio</h1>
             <form method="post" action="" id="formulario">
                 {% csrf_token %}
@@ -47,8 +47,11 @@
                 <div class="">
                     {{ form.as_table}}
                 </div>
+                <br>
                 <input type="submit" class="btn btn-warning btn-lg font-weight-bold" id="enviar" value="Modificar">
+                <br>
                 <input type="reset" class="btn btn-warning btn-lg font-weight-bold" id="limpiar" value="Limpiar">
+                <br>
                 <a href="{% url 'form_lista'%}" class="btn btn-warning btn-lg font-weight-bold">Volver</a>
             </form>
 

@@ -23,7 +23,7 @@ class Auto(models.Model):
 
 class Servicio(models.Model):
     idservicio = models.AutoField(primary_key=True,verbose_name='#')
-    nombreservicio = models.CharField(max_length=50, verbose_name='Nombre servicio')
+    nombreservicio = models.CharField(max_length=50, verbose_name='Nombre Servicio ')
     precio = models.IntegerField(null=True, blank=True, verbose_name='Precio $')
     
     def __str__(self):

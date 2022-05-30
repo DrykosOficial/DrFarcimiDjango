@@ -10,7 +10,7 @@ class AutoForm(ModelForm):
 class ServicioForm(ModelForm):
     class Meta:
         model = Servicio
-        fields = ['idservicio','nombreservicio','precio']
+        fields = ['nombreservicio','precio']
 
 class ClienteForm(ModelForm):
     class Meta:

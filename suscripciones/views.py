@@ -47,7 +47,7 @@ def form_servicio(request):
         else:
             datos['mensaje'] = 'NO se guardó servicio'
  
-    return render(request,'suscripciones/form_servicio.html', datos)
+    return render(request,'suscripciones/form_servicio.html',datos)
 
 def form_mod_servicio(request, id):
     servicio = Servicio.objects.get(idservicio=id)

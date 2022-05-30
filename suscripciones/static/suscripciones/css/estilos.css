@@ -393,22 +393,7 @@ footer {
     border: 0;
 }
 
-.fcontactos {
-    width: 30%;
-    height: 100%;
-    background: #3a3b83e6;
-    margin: 10% 33%;
-    padding: 4%;
-    border-radius: 2px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    display: block;
-    margin-top: 5em;
-    color: #ffcb69;
-    border-color: #f4a261;
-    box-shadow: 8px 12px 15px 8px #f4a261, 8px 50px 50px 8px #f4a261;
-}
-
-.fcontactos input,
+.formularioall input,
 textarea {
     border-radius: 10px;
     width: 98%;
@@ -595,7 +580,7 @@ a {
 
 /* TABLA LISTA*/
 
-.fondolista {
+.fondoall {
     width: 100%;
     height: auto;
     padding: 110px 0px;
@@ -624,25 +609,17 @@ a {
 /* TABLA LISTA*/
 
 
-/* TABLA AGREGAR*/
+/* FORMULARIO PARA TODO*/
 
-.fondoagregar {
-    width: 100%;
-    height: auto;
-    padding: 10px 0px;
-    background-image: url('../img/mecanicoservicios.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 0;
-}
-
-.tablaagregar {
+.formularioall {
     width: 30%;
-    height: 30%;
+    height: 100%;
     background: #3a3b83e6;
-    margin: 45%;
-    padding: 10%;
+    margin: 10% 33%;
+    padding: 4%;
+    border-radius: 2px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    display: block;
     margin-top: 5em;
     color: #ffcb69;
     border-color: #f4a261;
@@ -650,7 +627,7 @@ a {
 }
 
 
-/* TABLA AGREGAR*/
+/* FORMULARIO PARA TODO*/
 
 
 /* TABLA MODIFICAR*/
@@ -664,24 +641,6 @@ a {
     background-size: cover;
     border: 0;
 }
-
-.tablamodoficar {
-    width: 40%;
-    height: 100%;
-    background: #3a3b83e6;
-    margin: 10% 30%;
-    padding: 1%;
-    border-radius: 1px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    display: block;
-    margin-top: 10em;
-    color: #ffcb69;
-    border-color: #f4a261;
-    box-shadow: 8px 12px 15px 8px #f4a261, 8px 50px 50px 8px #f4a261;
-}
-
-
-/* TABLA MODIFICAR*/
 
 
 /*RESPONSIVE*/
@@ -754,9 +713,12 @@ a {
         padding-right: 3%;
     }
     .tablaagregar {
-        justify-content: space-evenly;
-        display: grid;
-        width: 50%;
+        left: 3%;
+        margin-right: 3%;
+        width: 88%;
+        margin-left: 3%;
+        padding-left: 3%;
+        padding-right: 3%;
     }
 }
 
