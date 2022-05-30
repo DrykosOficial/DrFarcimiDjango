@@ -1,0 +1,78 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBots Motors</title>
+    <link rel="shortcut icon" href="{%static 'suscripciones/img/logosolo.png'%}" type="image/x-icon">
+    <link rel="stylesheet" href="{%static 'suscripciones/css/estilos.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand col-4" href="#">
+            <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
+                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
+                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="fondoall">
+        <table class="table-bordered  tablalista">
+            <tr>
+                <th>ID</th>
+                <th>Nombre Servicio</th>
+                <th>Precio</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+                <th>Imagen</th>
+                <th>API</th>
+            </tr>
+            {% for s in servicios%}
+            <tr>
+                <td>{{s.idservicio}}</td>
+                <td>{{s.nombreservicio}}</td>
+                <td>{{s.precio}}</td>
+                <td>
+                    <a href="{% url 'form_mod_servicio' s.idservicio %}">Modificar</a>
+                </td>
+                <td><a href="{% url 'form_del_servicio' s.idservicio %}">Eliminar</a>
+                </td>
+                <td>
+                    {%if a.imagen %}
+                    <img src="{{ s.imagen.url }}" width="50" height="30"> {% endif %}
+                </td>
+                <td><a href="{% url 'detalle_servicio' s.idservicio %}">Modificar API</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        <div class="text-center">
+            <a class="btn btn-warning btn-lg font-weight-bold" type="button" href="{% url 'form_servicio'%}">Agregar Servicio</a>
+            <br>
+            <br>
+            <a class="btn btn-warning btn-lg font-weight-bold" type="button" href="{% url 'home'%}">Volver</a>
+        </div>
+    </div>
+</body>
+
+</html>
