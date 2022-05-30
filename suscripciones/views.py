@@ -39,13 +39,13 @@ def form_servicio(request):
     }
 
     if request.method == 'POST':
-        formulario = ServicioForm(request.POST,request.FILES)
+        formulario = ServicioForm(request.POST)
 
         if formulario.is_valid():
             formulario.save() #AGREGAR a la BD
-            datos['mensaje1'] = 'Se guardó el Servicio'
+            datos['mensaje'] = 'Se guardó el servicio'
         else:
-            datos['mensaje2'] = 'NO se guardó Servicio'
+            datos['mensaje'] = 'NO se guardó servicio'
  
     return render(request,'suscripciones/form_servicio.html',datos)
 
@@ -62,9 +62,9 @@ def form_mod_servicio(request, id):
 
         if formulario.is_valid():
             formulario.save() #MODIFICA a la BD
-            datos['mensaje3'] = 'Se modifico la tabla Servicio'
+            datos['mensaje'] = 'Se modifico la tabla Auto'
         else:
-            datos['mensaje4'] = 'NO se modifico la tabla Servicio'
+            datos['mensaje'] = 'NO se modifico la tabla Auto'
 
     return render(request,'suscripciones/form_mod_servicio.html',datos)   
 

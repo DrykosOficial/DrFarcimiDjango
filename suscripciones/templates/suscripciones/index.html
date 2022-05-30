@@ -32,6 +32,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
                     <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Nuestro Servicios</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Servicios</a></li>
                     <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
                 </ul>
             </div>
@@ -129,10 +131,13 @@
             </table>
         </div>
     </section>
+
     <section id="descservicios" class="text1">
         <div class="descripcionServicios">
             <h3>Servicios</h3>
             <p>Nosotros entregamos una gran variedad de servicios de calidad para sastifacer al cliente en lo que quiere.</p>
+            <p></p>
+            <br>
             <p>A continuaci&oacute;n entregamos una lista de nuestros precios:</p>
             <ul>
                 <li>Ajuste de motor $39.990</li>
@@ -142,15 +147,15 @@
                 <li>Frenos $7.990 </li>
                 <li>Scanner $15.990</li>
             </ul>
-            <p>Usted podr&aacute; agregar el servicio que necesite para su auto, en el siguiente boton!</p>
-            <a class="btn btn-warning btn-lg font-weight-bold" href="{% url 'form_lista' %}" target="_self">Ver lista servicio!</a>
-            <br>
-            <br>
+            <p>Usted tendra que agregar el servicio que necesita</p>
+            <button type="button" class="btn btn-warning btn-lg font-weight-bold"><a href= {% url 'form_lista' %} target="_self" class="#">Ver lista servicio!</a> </button>
         </div>
         <div class=" servImg">
             <img src="https://c.tenor.com/O-LlZ883WVgAAAAd/transformers-bumblebee.gif" alt="fototaller2">
         </div>
+
     </section>
+
     <br>
     <footer class="pie-footer">
         <div class="grupo1 container">

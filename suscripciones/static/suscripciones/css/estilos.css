@@ -582,8 +582,8 @@ a {
 
 .fondoall {
     width: 100%;
-    height: 100%;
-    padding: 100px 0px;
+    height: auto;
+    padding: 110px 0px;
     background-image: url('../img/mecanicoservicios.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -591,13 +591,18 @@ a {
 }
 
 .tablalista {
+    width: 30%;
     height: 100%;
-    width: 60%;
     background: #3a3b83e6;
-    margin: auto;
-    padding: 4% 3%;
+    margin: 10% 33%;
+    padding: 4%;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    display: block;
     margin-top: 5em;
     color: #ffcb69;
+    border-color: #f4a261;
+    box-shadow: 8px 12px 15px 8px #f4a261, 8px 50px 50px 8px #f4a261;
 }
 
 
@@ -625,14 +630,17 @@ a {
 /* FORMULARIO PARA TODO*/
 
 
-/*TABLA LISTAR*/
+/* TABLA MODIFICAR*/
 
-.table .theadcolor {
-    color: #ffcb69;
+.fondomodificar {
+    width: 100%;
+    height: auto;
+    padding: 110px 0px;
+    background-image: url('../img/mecanicoservicios.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
 }
-
-
-/*TABLA LISTAR*/
 
 
 /*RESPONSIVE*/
@@ -696,18 +704,23 @@ a {
         padding: 1em;
         justify-content: space-evenly;
     }
-    .formularioall {
-        display: block;
+    .fcontactos {
+        left: 3%;
         margin-right: 3%;
-        width: 80%;
+        width: 88%;
+        margin-left: 3%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .tablaagregar {
+        left: 3%;
+        margin-right: 3%;
+        width: 88%;
         margin-left: 3%;
         padding-left: 3%;
         padding-right: 3%;
     }
 }
-
-
-/*RESPONSIVE*/
 
 
 /*RESPONSIVE*/
