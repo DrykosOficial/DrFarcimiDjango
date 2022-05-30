@@ -58,7 +58,7 @@ def form_mod_servicio(request, id):
     }
 
     if request.method == 'POST':
-        formulario = ServicioForm(data = request.POST, instance = servicio)
+        formulario = ServicioForm(request.POST, request.FILES,instance = servicio)
 
         if formulario.is_valid():
             formulario.save() #MODIFICA a la BD
@@ -72,6 +72,6 @@ def form_mod_servicio(request, id):
 def form_del_servicio(request, id):
        servicio = Servicio.objects.get(idservicio=id)
        servicio.delete()
-       return redirect(to='home')
+       return redirect(to='form_lista')
    
     

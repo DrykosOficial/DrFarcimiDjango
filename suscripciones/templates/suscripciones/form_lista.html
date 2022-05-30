@@ -15,26 +15,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
-<header>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand col-4" href="#">
-            <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
-                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
-                <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <body>
-    <div class="fondoall">
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand col-4" href="#">
+                <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+        </button>
+            <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="fondolista">
         <table class="table-bordered  tablalista">
             <tr>
                 <th>ID</th>
@@ -56,8 +56,8 @@
                 <td><a href="{% url 'form_del_servicio' s.idservicio %}">Eliminar</a>
                 </td>
                 <td>
-                    {%if a.imagen %}
-                    <img src="{{ s.imagen.url }}" width="50" height="30"> {% endif %}
+                    {%if s.imagen %}
+                    <img src="{{ s.imagen.url }}" width="100" height="100"> {% endif %}
                 </td>
                 <td><a href="{% url 'detalle_servicio' s.idservicio %}">Modificar API</a>
                 </td>
@@ -73,6 +73,8 @@
             <a class="btn btn-warning btn-lg font-weight-bold" type="button" href="{% url 'home'%}">Volver</a>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 
 </html>

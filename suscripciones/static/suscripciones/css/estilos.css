@@ -582,8 +582,18 @@ a {
 
 .fondoall {
     width: 100%;
+    min-height: 100vh;
+    background-image: url('../img/mecanicoservicios.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
+    padding: 14%;
+}
+
+.fondolista {
+    width: 100%;
     height: 100%;
-    padding: 100px 0px;
+    padding: 300px 0px;
     background-image: url('../img/mecanicoservicios.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -591,12 +601,9 @@ a {
 }
 
 .tablalista {
-    height: 100%;
     width: 60%;
     background: #3a3b83e6;
     margin: auto;
-    padding: 4% 3%;
-    margin-top: 5em;
     color: #ffcb69;
 }
 
@@ -610,12 +617,11 @@ a {
     width: 30%;
     height: 100%;
     background: #3a3b83e6;
-    margin: 10% 33%;
+    margin: auto;
     padding: 4%;
     border-radius: 2px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     display: block;
-    margin-top: 5em;
     color: #ffcb69;
     border-color: #f4a261;
     box-shadow: 8px 12px 15px 8px #f4a261, 8px 50px 50px 8px #f4a261;
