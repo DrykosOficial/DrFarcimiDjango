@@ -1,83 +1,22 @@
 {
-    "marcas": [{
+    "mecanicos": [{
             "id": 1,
-            "nombre": "Audi",
-            "modelos": [
-                "A5",
-                "A3",
-                "A4"
-
-            ]
+            "nombre": "Juan Lopez",
+            "edad": "35 Años",
+            "telefono": "+56964456576"
         },
         {
             "id": 2,
-            "nombre": "BMW",
-            "modelos": [
-                "Serie 6",
-                "Serie 7",
-                "Z4"
-
-            ]
+            "nombre": "Patricio Gonzalez",
+            "edad": "40 Años",
+            "telefono": "+56954347687"
         },
         {
             "id": 3,
-            "nombre": "Chevrolet",
-            "modelos": [
-                "Alto",
-                "Astra",
-                "Bel Air"
-
-            ]
-        },
-        {
-            "id": 4,
-            "nombre": "Citroen",
-            "modelos": [
-                "Xsara",
-                "Picasso",
-                "C3"
-
-            ]
-        },
-        {
-            "id": 5,
-            "nombre": "Daihatsu",
-            "modelos": [
-                "Charade",
-                "Charmant",
-                "Sirion"
-
-            ]
-        },
-        {
-            "id": 6,
-            "nombre": "Dodge",
-            "modelos": [
-                "Coronet",
-                "Dart",
-                "Demon"
-
-            ]
-        },
-        {
-            "id": 7,
-            "nombre": "Fiat",
-            "modelos": [
-                "Zastava",
-                "Idea",
-                "124"
-
-            ]
-        },
-        {
-            "id": 8,
-            "nombre": "Ford",
-            "modelos": [
-                "Fusion",
-                "Crown",
-                "Victoria"
-
-            ]
+            "nombre": "Carmen Perez",
+            "edad": "37 Años",
+            "telefono": "+56989765456"
         }
+
     ]
 }

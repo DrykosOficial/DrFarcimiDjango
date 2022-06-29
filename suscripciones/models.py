@@ -1,4 +1,5 @@
 
+from contextlib import nullcontext
 from django.db import models
 
 class Mecanico(models.Model):
@@ -23,8 +24,10 @@ class Auto(models.Model):
 
 class Servicio(models.Model):
     idservicio = models.AutoField(primary_key=True,verbose_name='#')
-    nombreservicio = models.CharField(max_length=50, verbose_name='Nombre servicio')
+    nombreservicio = models.CharField(max_length=50, verbose_name='Nombre Servicio ')
     precio = models.IntegerField(null=True, blank=True, verbose_name='Precio $')
+    imagen = models.ImageField(upload_to="servicios",null=True)
+    
     
     def __str__(self):
         return  self.nombreservicio

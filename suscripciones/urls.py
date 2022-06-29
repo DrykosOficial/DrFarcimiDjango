@@ -1,6 +1,6 @@
 from django import views
 from django.urls import path
-from .views import home, detalles, formularioo, sesion, form_lista, form_servicio, form_mod_servicio,form_del_servicio
+from .views import home, detalles, formularioo, sesion, form_lista, form_servicio, form_mod_servicio,form_del_servicio, ver_api
 
 urlpatterns = [
     path('',home,name="home"),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('form_servicio',form_servicio,name='form_servicio'), # AGREGAR DATOS
     path('form_mod_servicio/<id>',form_mod_servicio,name='form_mod_servicio'), # MODIFICAR LOS DATOS
     path('form_del_servicio/<id>',form_del_servicio,name='form_del_servicio'), # ELIMINAR LOS DATOS
+    path('ver_api',ver_api,name='ver_api'),
 ]

@@ -1,4 +1,4 @@
-{%load static%}
+{%load static%}{% load socialaccount %} {% providers_media_js %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,17 +19,15 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand col-4" href="#">
-                <img src= "{%static 'suscripciones/img/logo3-1_2.png'%}"width="120" alt="">
+                <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %} >Inicio</a></li>
-                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href= {% url 'detalles' %} >Suscripci&oacute;n</a></li>
-                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %} >Nuestro Servicios</a></li>
-                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %} >Servicios</a></li>
+                    <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={ % url 'detalles' %}>Suscripci&oacute;n</a></li>
                     <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
                 </ul>
             </div>
@@ -41,10 +39,8 @@
                 <div class="login-html">
                     <div class="row">
                         <div class="col">
-
                             <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Inicio sesión</label>
                             <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
-
                             <div class="login-form">
                                 <div id="signvalidacion">
                                     <div class="sign-in-htm">
@@ -63,10 +59,12 @@
                                             <label for="check"><span class="icon"></span>   Recordarme</label>
                                         </div>
                                         <div class="group">
-
                                             <input type="submit" id="JEnviar" value="Iniciar Sesion" class="btn btn-warning fw-bold float-end" />
-
                                         </div>
+                                        {% if user.is_authenticated %}
+                                        <p>Welcome, You are logged in as {{ user.username }}</p>
+                                        {% else %}
+                                        <a href="{% provider_login_url 'google' %}">Login With Google</a> {% endif %}
                                         <div class="hr"></div>
                                         <div class="foot-lnk">
                                             <a href="#forgot">Has olvidado tu contraseña?</a>
@@ -128,13 +126,9 @@
             </div>
         </div>
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="{%static 'suscripciones/js/validaciones.js' %}"></script> 
-
+    <script src="{%static 'suscripciones/js/validaciones.js' %}"></script>
 </body>
 
 </html>
