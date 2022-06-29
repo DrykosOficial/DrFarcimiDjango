@@ -1,12 +1,15 @@
 from django import views
 from django.urls import path
-from .views import home, detalles, formularioo, sesion, form_lista, form_servicio, form_mod_servicio,form_del_servicio
+from .views import home, detalles, formularioo, sesion, form_lista, form_servicio, form_mod_servicio,form_del_servicio,tienda,administracionweb,listarapi
 
 urlpatterns = [
     path('',home,name="home"),
     path('detalles',detalles,name="detalles"),
+    path('tienda',tienda,name="tienda"),
+    path('administracionweb',administracionweb,name="administracionweb"),
     path('formularioo',formularioo,name="formularioo"),
     path('sesion',sesion,name="sesion"),
+    path('listarapi',listarapi,name="listarapi"),
     path('form_lista',form_lista,name='form_lista'), # VER LISTA
     path('form_servicio',form_servicio,name='form_servicio'), # AGREGAR DATOS
     path('form_mod_servicio/<id>',form_mod_servicio,name='form_mod_servicio'), # MODIFICAR LOS DATOS

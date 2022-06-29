@@ -1,0 +1,76 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBots Motors</title>
+    <link rel="shortcut icon" href="{%static 'suscripciones/img/logosolo.png'%}" type="image/x-icon">
+    <link rel="stylesheet" href="{%static 'suscripciones/css/estilos.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body class="fondoapi">
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand col-4" href="#">
+                <img src="{%static 'suscripciones/img/logo3-1_2.png'%}" width="120" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+        </button>
+            <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
+                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'sesion' %}>Inicio Sesi&oacute;n</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div role="main" class="tablaapi" style="margin-top: 80px;">
+
+        <div>
+            <h1>Api</h1>
+            <p class="lead">llamar la API desde HTML</p>
+            <br>
+            <h2>Agregar nuevo servicio</h2><br>
+            <div class="row">
+                <div class="form-inline">
+
+                    <div class="form-group" style="margin-right: 20px;">
+                        <label for="txtservicio">Nombre Servicio: &nbsp;</label>
+                        <input type="text" class="form-control" id="txtservicio">
+                    </div>
+                    <div class="form-group" style="margin-right: 20px;">
+                        <label for="txtprecio">Precio: &nbsp;</label>
+                        <input type="text" class="form-control" id="txtprecio">
+                    </div>
+                    <br>
+                    <button id="btnSubmit" type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+            <br><br>
+
+            <h2>Lista Servicio</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>Nombre Servicio</th>
+                    <th>Precio</th>
+                </tr>
+                <tbody id="divBody"></tbody>
+
+
+            </table>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="{%static 'suscripciones/js/validaciones.js' %}"></script>
+</body>
+
+</html>
