@@ -1,6 +1,13 @@
+from contextvars import Token
+from email import message
+from multiprocessing import context
+import django
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.shortcuts import render,redirect
 from .models import Servicio
 from .forms import ServicioForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+
 
 class Persona:
     def __init__ (self, nombre, edad, telefono):
@@ -22,8 +29,27 @@ def formularioo(request):
     return render(request,'suscripciones/formulariocontacto.html')
 
 def sesion(request):
+  
     return render(request,'suscripciones/iniciosesion.html')
 
+
+def tienda(request):
+    return render (request,'suscripciones/tienda.html')\
+
+@login_required
+@user_passes_test(lambda u: u.is_staff, redirect_field_name=None)
+def administracionweb(request):  
+    return render(request,'suscripciones/administracionweb.html')
+    
+@login_required
+@user_passes_test(lambda u: u.is_staff, redirect_field_name=None)
+def listarapi(request):
+
+    return render(request,'suscripciones/listarapi.html')
+
+
+@login_required
+@user_passes_test(lambda u: u.is_staff, redirect_field_name=None)
 def form_lista(request):
     servicio=Servicio.objects.all()
     datos={
@@ -32,7 +58,8 @@ def form_lista(request):
     return render(request,'suscripciones/form_lista.html',datos)
 
 
-
+@login_required
+@user_passes_test(lambda u: u.is_staff, redirect_field_name=None)
 def form_servicio(request):
     datos = {
         'form': ServicioForm()
@@ -48,7 +75,8 @@ def form_servicio(request):
             datos['mensaje2'] = 'NO se guardó Servicio'
  
     return render(request,'suscripciones/form_servicio.html',datos)
-
+@login_required
+@user_passes_test(lambda u: u.is_staff, redirect_field_name=None)
 def form_mod_servicio(request, id):
     servicio = Servicio.objects.get(idservicio=id)
     
@@ -68,7 +96,8 @@ def form_mod_servicio(request, id):
 
     return render(request,'suscripciones/form_mod_servicio.html',datos)   
 
-
+@login_required
+@user_passes_test(lambda u: u.is_staff, redirect_field_name=None)
 def form_del_servicio(request, id):
        servicio = Servicio.objects.get(idservicio=id)
        servicio.delete()

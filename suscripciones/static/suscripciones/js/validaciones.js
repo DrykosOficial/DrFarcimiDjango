@@ -1,52 +1,60 @@
+/*COOCKIE PARA GUARDAR EL TOKEN*/
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+
 /*FORMULARIO DE REGISTRO CON JS*/
-if (document.body.classList.contains('inisiosecion')) {
-    var usuario = document.getElementById('user1');
-    var contrasenna = document.getElementById('pass1');
-    var contrasenna2 = document.getElementById('pass2');
-    var correo = document.getElementById('correo');
+if (document.body.classList.contains('')) {
+    var usuario = document.getElementsByName('username')[0];
+    var contrasenna = document.getElementsByName('password')[0];
+    var correo = document.getElementsByName('email')[0];
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
 
-        JsRegistrar();
-    });
+
 
     function JsRegistrar() {
-
+        var okay = true;
         var usuarioValue = usuario.value.trim();
         var correoValue = correo.value.trim();
         var contrasennaValue = contrasenna.value.trim();
-        var contrasenna2Value = contrasenna2.value.trim();
 
         if (usuarioValue === '') {
             setErrorFor(usuario, 'No puede dejar el usuario en blanco.')
+            okay = false;
 
         } else {
             setSuccessFor(usuario);
         }
         if (correoValue === '') {
             setErrorFor(correo, 'No puede dejar el correo electrónico en blanco');
+            okay = false;
         } else if (!isEmail(correoValue)) {
             setErrorFor(correo, 'No ingreso un correo electrónico válido');
+            okay = false;
         } else {
             setSuccessFor(correo);
         }
 
         if (contrasennaValue === '') {
             setErrorFor(contrasenna, 'No debe dejar en blanco la contraseña');
+            okay = false;
         } else {
             setSuccessFor(contrasenna);
         }
-
-        if (contrasenna2Value === '') {
-            setErrorFor(contrasenna2, 'No debe dejar en blanco la contraseña');
-        } else if (contrasennaValue !== contrasenna2Value) {
-            setErrorFor(contrasenna2, 'Las contraseñas no coinciden');
-        } else {
-            setSuccessFor(contrasenna2);
-        }
-
-
+        return okay;
     }
 
     function setSuccessFor(input) {
@@ -62,9 +70,7 @@ if (document.body.classList.contains('inisiosecion')) {
         small.innerText = message;
     }
 
-    function isEmail(correo) {
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(correo);
-    }
+
 }
 
 
@@ -132,9 +138,7 @@ if (document.body.classList.contains('formulariocontacto')) {
         small.innerText = message;
     }
 
-    function isEmail(correo) {
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(correo);
-    }
+
 }
 
 
@@ -171,13 +175,187 @@ $(document).ready(function() {
 
 });
 
-$.get("static/suscripciones/api/models.json", function(data) {
-    $.each(data.marcas, (function(i, marca) {
-        $("#marcas").append("<tr><td>" + marca.nombre);
+//$.get("static/suscripciones/api/models.json", function(data) {
+//$.each(data.marcas, (function(i, marca) {
+// $("#marcas").append("<tr><td>" + marca.nombre);
 
-    }));
-});
+//}));
+//});
 
-$("#JVER").on("click", function() {
-    $("#marcas").toggle();
+//$("#JVER").on("click", function() {
+//   $("#marcas").toggle();
+//});
+
+
+
+
+
+
+/* VALIDADOR DE TOKEN REGISTRO*/
+if (document.body.classList.contains('registro')) {
+
+    $('#form-registro').on('submit', function(e) {
+        $.ajax({
+            url: '/knox/valida-form-registro/',
+            type: 'POST',
+            dataType: "json",
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+            },
+            data: $(this).serialize(),
+            success: function(response) {
+                if (JSON.stringify(response).includes('url')) {
+                    window.location = JSON.parse(JSON.stringify(response.url));
+                } else {
+                    $('#error-registro').html(JSON.parse(JSON.stringify(response['mensaje'])));
+                }
+            },
+        });
+        e.preventDefault();
+    });
+}
+
+/* VALIDADOR DE TOKEN LOGIN*/
+if (document.body.classList.contains('login1')) {
+
+    $('#form-login').on('submit', function(e) {
+        $.ajax({
+            url: '/knox/valida-form/',
+            type: 'POST',
+            dataType: "json",
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+            },
+            data: $(this).serialize(),
+            success: function(response) {
+                if (JSON.stringify(response).includes('url')) {
+                    window.location = JSON.parse(JSON.stringify(response.url));
+                } else {
+                    $('#error-login').html(JSON.parse(JSON.stringify(response['mensaje'])));
+                }
+            },
+        });
+        e.preventDefault();
+    });
+}
+
+
+
+
+
+
+const token = getCookie('sessiontoken')
+const csrftoken = getCookie('csrftoken');
+
+$(document).ready(function() {
+    BindServicios();
 });
+/* POST*/
+$('#btnSubmit').click(function() {
+
+
+    let nombreservicio = $('#txtservicio').val();
+    let precio = $('#txtprecio').val();
+    $.ajax({
+
+        type: 'POST',
+        dataType: 'json',
+        headers: { 'Authorization': 'Token ' + token, 'X-CSRFToken': csrftoken },
+
+        data: {
+            "nombreservicio": nombreservicio,
+            "precio": precio
+        },
+
+        url: "/API/lista_servicio",
+        error: function(xhr, status, error) {
+
+            var err_msg = ''
+            for (var prop in xhr.responseJSON) {
+                err_msg += prop + ': ' + xhr.responseJSON[prop] + '\n';
+            }
+
+            alert(err_msg);
+        },
+        success: function(result) {
+
+            BindServicios();
+
+
+            $('#txtId').val("");
+            $('#txtservicio').val("");
+            $('#txtprecio').val("");
+
+        }
+    });
+});
+/* GET*/
+function BindServicios() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        headers: { 'Authorization': 'Token ' + token, 'X-CSRFToken': csrftoken },
+
+        url: "/API/lista_servicio",
+        success: function(result) {
+
+            var totalCount = result.length;
+            var structureDiv = "";
+            for (let i = 0; i < totalCount; i++) {
+                structureDiv += "<tr>" +
+                    "     <td>" + result[i].idservicio + "</td>" +
+                    "      <td>" + result[i].nombreservicio + "</td>" +
+                    "             <td>" + result[i].precio + "</td>" +
+                    "              <td><button class='btn btn-light' onclick='return confirm(\"Está seguro de que desea eliminar este servicio?\",DeleteRow(" + result[i].idservicio + "))'>Eliminar</button></td>" +
+                    "           </tr>";
+            }
+
+            $("#divBody").html(structureDiv);
+
+        }
+    });
+
+}
+/*function PutRow(id) {
+
+    $.ajax({
+        type: 'PUT',
+        dataType: 'json',
+        headers: { 'Authorization': 'Token ' + token, 'X-CSRFToken': csrftoken },
+        url: "/API/detalle_servicio/" + id,
+        data: {
+            "nombreservicio": nombreservicio,
+            "precio": precio
+        },
+        success: function(result) {
+
+            BindServicios();
+        }
+    });
+}
+
+
+
+/* DELETE*/
+function DeleteRow(id) {
+
+    $.ajax({
+        type: 'DELETE',
+        dataType: 'json',
+        headers: { 'Authorization': 'Token ' + token, 'X-CSRFToken': csrftoken },
+        url: "/API/detalle_servicio/" + id,
+        error: function(xhr, status, error) {
+
+            var err_msg = ''
+            for (var prop in xhr.responseJSON) {
+                err_msg += prop + ': ' + xhr.responseJSON[prop] + '\n';
+            }
+
+            alert(err_msg);
+        },
+        success: function(result) {
+
+            BindServicios();
+        }
+    });
+}
