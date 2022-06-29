@@ -66,7 +66,7 @@
                             <form action="{% url 'login-valida' %}" method="post" novalidate id="form-login">
                                 {% csrf_token %} {% render_form serializer template_pack='rest_framework/vertical' %}
                                 <div id="error-login"></div>
-                                <div class="hr"></div>
+                                <div class="hr2"></div>
                                 <button type="submit" class="btn btn-warning btn-lg font-weight-bol">Iniciar sesión</button>
                                 <br>
                                 <br> {% if user.is_authenticated %}

@@ -64,7 +64,7 @@
                         {% csrf_token %} {% render_form serializer template_pack='rest_framework/vertical' %}
                         <div id="error-registro">
                         </div>
-                        <div class="hr"></div>
+                        <div class="hr2"></div>
                         <button type="submit" class="btn btn-warning btn-md font-weight-bold">Registrarse</button> {% if user.is_authenticated %}
                         <p>Welcome, You are logged in as {{ user.username }}</p>
                         {% else %}
