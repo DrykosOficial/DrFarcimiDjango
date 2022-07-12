@@ -15,12 +15,10 @@ class Carrito:
             self.carrito[id]={
                 "producto_id": producto.id,
                 "nombre": producto.nombre,
-                "acumulado": producto.precio,
-                
-       
+                "acumulado": producto.precio,             
             }
         else:
-
+            print(self.carrito)
             self.carrito[id]["acumulado"] += producto.precio
         self.guardar_carrito()
 

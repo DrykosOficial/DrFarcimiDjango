@@ -99,6 +99,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'Carrito.proceso.total_carrito',
+                'suscripciones.procesosub.totalpagosub',
             ],
         },
     },

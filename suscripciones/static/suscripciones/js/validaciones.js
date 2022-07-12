@@ -174,17 +174,42 @@ $(document).ready(function() {
 
 
 });
+/* API EXTERNA*/
+$.get("static/suscripciones/api/models.json", function(data) {
+    $.each(data.mecanicos, (function(i, mecanico) {
+        let nombre = document.createElement("h5");
+        nombre.innerHTML = 'Nombre: ' + mecanico.nombre;
 
-//$.get("static/suscripciones/api/models.json", function(data) {
-//$.each(data.marcas, (function(i, marca) {
-// $("#marcas").append("<tr><td>" + marca.nombre);
+        let edad = document.createElement("h5");
+        edad.innerHTML = 'Edad: ' + mecanico.edad;
 
-//}));
-//});
+        let telefono = document.createElement("h5");
+        telefono.innerHTML = 'Telefono: ' + mecanico.telefono;
 
-//$("#JVER").on("click", function() {
-//   $("#marcas").toggle();
-//});
+        let caption = document.createElement("div");
+        caption.className = 'carousel-caption d-none d-lg-block';
+        caption.appendChild(nombre);
+        caption.appendChild(edad);
+        caption.appendChild(telefono);
+
+        let img = document.createElement("img");
+        img.setAttribute('src', mecanico.imagen);
+        img.setAttribute('alt', mecanico.nombre);
+        img.setAttribute('style', 'width: 50%; margin-left: 50%;');
+
+        carousel = document.createElement("div");
+        carousel.appendChild(img);
+        carousel.appendChild(caption);
+        if (i === 0) {
+            carousel.className = 'carousel-item active';
+        } else {
+            carousel.className = 'carousel-item';
+        }
+        $("#carrusel").append(carousel);
+
+    }));
+});
+
 
 
 

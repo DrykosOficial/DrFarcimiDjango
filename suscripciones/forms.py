@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Auto, Servicio, Cliente, Mecanico
+from .models import Auto, Servicio,  Mecanico, Suscripcion
 
 class AutoForm(ModelForm):
     class Meta:
@@ -12,10 +12,10 @@ class ServicioForm(ModelForm):
         model = Servicio
         fields = ['nombreservicio','precio','imagen']
 
-class ClienteForm(ModelForm):
+class SuscripcionForm(ModelForm):
     class Meta:
-        model = Cliente
-        fields = ['nombre','telefono','correo']
+        model = Suscripcion
+        fields = ['nombret','numerot','mest','annot','cvv',]
 
 class MecanicoForm(ModelForm):
     class Meta:

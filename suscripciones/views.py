@@ -1,20 +1,12 @@
-from contextvars import Token
-from email import message
-from multiprocessing import context
-import django
+
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.shortcuts import render,redirect
-from .models import Servicio
-from .forms import ServicioForm
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from .procesosub import totalpagosub
+from .suscripcion import SuscripcionesMant
+from .models import Servicio, TipoSuscripcion
+from .forms import ServicioForm, SuscripcionForm
 
 
-class Persona:
-    def __init__ (self, nombre, edad, telefono):
-        self.nombre=nombre
-        self.edad=edad
-        self.telefono=telefono
-        super().__init__()
         
 
 # Create your views here.
@@ -23,7 +15,9 @@ def home(request):
     return render(request,'suscripciones/index.html')
 
 def detalles(request):
-    return render(request,'suscripciones/detalles.html')
+    TipoSuscripciones = TipoSuscripcion.objects.all()
+    return render(request, "suscripciones/detalles.html", {'TipoSuscripciones':TipoSuscripciones})
+
         
 def formularioo(request):
     return render(request,'suscripciones/formulariocontacto.html')
@@ -32,9 +26,46 @@ def sesion(request):
   
     return render(request,'suscripciones/iniciosesion.html')
 
+def pagosuscripcion(request):
+    datos = {
+        'form3': SuscripcionForm()
+    }
+    if request.method == 'POST':
+        formulario = SuscripcionForm(request.POST)
+        if formulario.is_valid():
+            compra = formulario.save(commit=False)
+            compra.usuario=request.user
+            compra.precio=totalpagosub(request)['totalpagosub']
+            compra.save()
+            datos['mensaje1'] = 'Suscripcion realizada, Le enviaremos un correo con su resivo!'
+        else:
+                 datos['mensaje2'] = 'Suscripcion fallida'
+    return render (request,'suscripciones/pagosuscripcion.html',datos)
 
+
+def agregar_suscripciones(request, tiposuscripcion_id):
+    suscripciones = SuscripcionesMant(request)
+    tipoSuscripcion = TipoSuscripcion.objects.get(id=tiposuscripcion_id)
+    suscripciones.agregarr(tipoSuscripcion)
+    return redirect("detalles")
+
+def eliminar_suscripciones(request, producto_id):
+        suscripciones = SuscripcionesMant(request)
+        tipoSuscripcion = TipoSuscripcion.objects.get(id=producto_id)
+        suscripciones.eliminar(tipoSuscripcion)
+        return redirect("detalles") 
+
+def limpiar(request):
+    suscripciones = SuscripcionesMant(request)
+    suscripciones.limpiar()
+    return redirect("detalles")
+
+
+
+@login_required
 def tienda(request):
-    return render (request,'suscripciones/tienda.html')\
+    return render (request,'suscripciones/tienda.html')
+       
 
 @login_required
 @user_passes_test(lambda u: u.is_staff, redirect_field_name=None)

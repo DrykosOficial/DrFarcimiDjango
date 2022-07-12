@@ -2,6 +2,9 @@
 from contextlib import nullcontext
 from pyexpat import model
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
+from Carrito.models import Compra
 
 class Mecanico(models.Model):
     rutMecanico = models.IntegerField(primary_key=True,verbose_name='RUT')
@@ -33,15 +36,28 @@ class Servicio(models.Model):
     def __str__(self):
         return  self.nombreservicio
             
-class Cliente(models.Model):
-    idCliente = models.AutoField(primary_key=True,verbose_name='ID')
-    nombre = models.CharField(max_length=50,verbose_name='Nombre')
-    telefono = models.IntegerField(null=True, blank=True, verbose_name='Telefono')
-    correo = models.CharField(max_length=30,null=True, blank=True, verbose_name='Correo')
 
     def __str__(self):
         return self.nombre
+class Suscripcion(models.Model):
+    id = models.AutoField(primary_key=True)
+    usuario= models.ForeignKey(User,on_delete=models.CASCADE)
+    fecha =  models.DateField(default=timezone.now,verbose_name="Fecha Compra")
+    nombret =  models.CharField(max_length=150,verbose_name="Nombre Tarjeta")
+    numerot = models.IntegerField(verbose_name="Número Tarjeta")
+    mest =  models.IntegerField(verbose_name="Mes Exp")
+    annot =  models.IntegerField(verbose_name="Año Exp")
+    cvv =  models.IntegerField(verbose_name="CVV")
+    precio = models.IntegerField(verbose_name="Precio")
+    def __str__(self):
+        return f'{self.fecha} -> {self.usuario}' 
     
-
+class TipoSuscripcion(models.Model):
+    nombre = models.CharField(max_length=64)
+    descripcion = models.CharField(max_length=100000)
+    precio = models.IntegerField(verbose_name='$ ')
+    imagen = models.ImageField(null=True, blank=True)
+    def __str__(self):
+            return f'{self.nombre} -> {self.precio}'
     
 
