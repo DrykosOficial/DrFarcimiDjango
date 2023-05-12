@@ -29,7 +29,6 @@
             <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
-                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item active mx-2"><a class="nav-link font-weight-bold" href="{% url 'tienda' %}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     {% endif %} {% if user.is_staff %}
@@ -65,21 +64,18 @@
             <div class="carousel-item active">
                 <img src="{%static 'suscripciones/img/bumblebee.jpg'%}" class="d-block w-100" alt="bootstrap">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>AutoBots Motors</h5>
                     <p></p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{%static 'suscripciones/img/lambo.jpg'%}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>AutoBots Motors</h5>
 
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{%static 'suscripciones/img/optimus.jpg'%}" class="d-block w-100 optimus" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>AutoBots Motors</h5>
                     <p></p>
                 </div>
             </div>
@@ -95,77 +91,13 @@
     </div>
 
     <section id="nuestrosServicios" class="nuestroservicio container">
-        <h3>Nuestros Servicios</h3>
-        <p>Estamos orientados en brindar la mejor atenci&oacute;n y servicio en la mantenci&oacute;n de su veh&iacute;culo, d&aacute;ndole un valor agregado y ofreci&eacute;ndole la seguridad que su inversi&oacute;n siempre estar&aacute; en buenas manos.</p>
-        <div class="descripcion">
-            <div class="uno">
-                <img class="imagenCard" src="{%static 'suscripciones/img/herramienta.png'%}" alt="">
-                <h4>Ajuste de motor</h4>
-            </div>
-            <div class="uno">
-                <img class="imagenCard" src="{%static 'suscripciones/img/herramienta.png'%}" alt="">
-                <h4>Cambio de Aceite</h4>
-            </div>
-            <div class="uno">
-                <img class="imagenCard" src="{%static 'suscripciones/img/herramienta.png'%}" alt="">
-                <h4>Mantenci&oacute;n por Kilometraje</h4>
-            </div>
-            <div class="uno">
-                <img class="imagenCard" src="{%static 'suscripciones/img/herramienta.png'%}" alt="">
-                <h4>Electricidad</h4>
-            </div>
-        </div>
-        <div class="descripcion">
-            <div class="uno">
-                <img class="imagenCard" src="{%static 'suscripciones/img/herramienta.png'%}" alt="">
-                <h4>Frenos</h4>
-            </div>
-            <div class="uno">
-                <img class="imagenCard" src="{%static 'suscripciones/img/herramienta.png'%}" alt="">
-                <h4>Scanner</h4>
-            </div>
-        </div>
+        <h3>Nuestra Mision</h3>
+        <p>Nuestro establecimiento donde se venden medicamentos y productos de cuidado de la salud, bajo la supervisión de un farmacéutico o farmacéutica, quien es el profesional de la salud encargado de dispensar medicamentos y brindar asesoramiento sobre
+            el uso correcto de los mismos.</p>
     </section>
 
-    <section class="suscripcion">
-        <div class="descripcionsub my-5">
-            <h3>Suscripci&oacute;n</h3>
-
-            <p>El cliente puede optar por una suscripci&oacute;n que ofrece nuestra empresa, una mantenci&oacute;n para su vehiculo, pagando al mes el precio de la subcripci&oacute;n elegida seg&uacute;n su categoria</p>
-            <p>Tambi&eacute;n si usted cuenta con un vehiculo de la siguiente lista, tendr&aacute; un descuento mayor! </p>
-            <p>La categoria de las suscripciones son la siguientes:</p>
-            <ul>
-                <li>Suscripci&oacute;n Optimus Prime</li>
-                <li>Suscripci&oacute;n Iron Hide</li>
-                <li>Subcripci&oacute;n Ratchet</li>
-            </ul>
-        </div>
-    </section>
-    <section id="descservicios" class="text1">
-        <div class="descripcionServicios">
-            <h3>Servicios</h3>
-            <p>Nosotros entregamos una gran variedad de servicios de calidad para sastifacer al cliente en lo que quiere.</p>
-            <p>A continuaci&oacute;n entregamos una lista de nuestros precios:</p>
-            <ul>
-                <li>Ajuste de motor $39.990</li>
-                <li>Cambio de aceite $29.990</li>
-                <li>Mantenci&oacute;n por Kilometraje $10.990</li>
-                <li>Electricidad $5.990 </li>
-                <li>Frenos $7.990 </li>
-                <li>Scanner $15.990</li>
-            </ul>
-            <br>
-            <br>
-        </div>
-        <div class="servImg">
-            <img src="https://c.tenor.com/O-LlZ883WVgAAAAd/transformers-bumblebee.gif" alt="fototaller2">
-        </div>
-
-    </section>
-
-    <h3 class="text-center">Mec&aacute;nicos del mes
+    <h3 class="text-center">Medicos del mes
     </h3>
-    <h5 class="text-center">Ac&aacute; est&aacute;n los Mec&aacute;nicos más cotizados de nuestro taller</h5>
     <br>
     <div id="carouselsegundario" class="carousel slide colorfondo" data-ride="carousel" style="width: 60%; text-align: center;  margin-left: 20%;">
         <div class="carousel-inner" id="carrusel">
@@ -190,13 +122,13 @@
             </div>
             <div class="box2">
                 <h3>Sobre Nosotros</h3>
-                <p>Somos una empresa que cuenta con un equipo de mec&aacute;nicos cualificados para convertir en autos antiguos y comunes en unas maquinas altamentes eficientes en caminos o carreteras</p>
+                <p>Somos una empresa que cuenta con un equipo de medicos cualificados para su atencion medica</p>
             </div>
             <div class="box3">
                 <h3>CONTACTOS</h3>
                 <ul>
                     <li>
-                        <i><a href="#" class="fa-brands fa-instagram"></a>  AutoBotsCL</i>
+                        <i><a href="#" class="fa-brands fa-instagram"></a>  Dr. Farcimi</i>
 
                     </li>
                     <li>
@@ -211,7 +143,7 @@
 
             </div>
         </div>
-        <p class="text-center py-2"><small>&copy; AutoBots Motors </small></p>
+        <p class="text-center py-2"><small>&copy; Dr. Farcimi </small></p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

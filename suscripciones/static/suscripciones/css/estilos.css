@@ -18,7 +18,7 @@
     
     .navbar,
     footer {
-        background-color: #FFCB69;
+        background-color: #edecec;
     }
     
     .dropdownMenuButton {
@@ -225,7 +225,7 @@
         min-height: 670px;
         position: relative;
         background: url('../img/autodesenfoque.jpeg') no-repeat center;
-        box-shadow: 0 12px 15px 0 #ffc107, 0 17px 50px 0 #ffcb69;
+        box-shadow: 0 12px 15px 0 #ffffff, 0 17px 50px 0 #000000;
     }
     
     .login-html {
@@ -234,7 +234,7 @@
         height: 100%;
         position: absolute;
         padding: 40px 30px;
-        background: #ffcb69;
+        background: #edecec;
     }
     
     .fondoinicio {
@@ -526,7 +526,7 @@
         width: 100%;
         min-height: 100vh;
         padding: 300px 0px;
-        background-image: url('../img/mecanicoservicios.jpg');
+        background-image: url('../img/medicos2.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         border: 0;
@@ -600,7 +600,7 @@
     .fondoinicioregistro {
         width: 100%;
         min-height: 100vh;
-        background-image: url('../img/optimosdesenfoque.jpeg');
+        background-image: url('../img/medicos1.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         border: 0;

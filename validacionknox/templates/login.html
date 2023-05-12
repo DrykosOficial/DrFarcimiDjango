@@ -28,7 +28,6 @@
             <div class="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active mx-4"><a class="nav-link font-weight-bold" href={% url 'home' %}>Inicio</a></li>
-                    <li class="nav-item mx-4"><a class="nav-link font-weight-bold" href={% url 'detalles' %}>Suscripci&oacute;n</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item active mx-2"><a class="nav-link font-weight-bold" href="{% url 'tienda' %}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     {% endif %} {% if user.is_staff %}
@@ -118,13 +117,13 @@
                 </div>
                 <div class="box2">
                     <h3>Sobre Nosotros</h3>
-                    <p>Somos una empresa que cuenta con un equipo de mec&aacute;nicos cualificados para convertir en autos antiguos y comunes en unas maquinas altamentes eficientes en caminos o carreteras</p>
+                    <p>Somos una empresa que cuenta con un equipo de medicos cualificados para su atencion medica</p>
                 </div>
                 <div class="box3">
                     <h3>CONTACTOS</h3>
                     <ul>
                         <li>
-                            <i><a href="#" class="fa-brands fa-instagram"></a>  AutoBotsCL</i>
+                            <i><a href="#" class="fa-brands fa-instagram"></a>  Dr. Farcimi</i>
 
                         </li>
                         <li>
@@ -139,7 +138,7 @@
 
                 </div>
             </div>
-            <p class="text-center py-2"><small>&copy; AutoBots Motors </small></p>
+            <p class="text-center py-2"><small>&copy; Dr. Farcimi </small></p>
         </footer>
 
 
