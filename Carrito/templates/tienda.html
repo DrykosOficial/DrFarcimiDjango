@@ -117,9 +117,30 @@
                     <div class="col-6 "><a href="{% url 'CLS' %} " class="btn btn-warning btn-md font-weight-bold ">Limpiar</a></div>
                     <div class="col-6 "><a href="{% url 'checkout' %}" class="btn btn-warning btn-md font-weight-bold">Continuar</a></div>
                 </div>
+                <div id="paypal-button-container"></div>
+                <script src="https://www.paypal.com/sdk/js?client-id=AYLMXln8PqZbG9nmrnMWjpRIF3g9rdQhrUjXK3ESWqf97n7dFbz2eYtp4V6s15lc8tzh3RekRN4ew1_x&components=buttons"></script>
+                <script>
+                    paypal.Buttons({
+                        createOrder() {
+                            return fetch("/my-server/create-paypal-order", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    cart: [{
+                                        sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
+                                        quantity: "YOUR_PRODUCT_QUANTITY"
+                                    }]
+                                })
+                            })
+                        }
+                    }).render('#paypal-button-container');
+                </script>
             </div>
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <footer class="pie-footer">
